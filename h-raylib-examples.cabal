@@ -12,7 +12,9 @@ category:           Game
 build-type:         Simple
 extra-doc-files:    CHANGELOG.md
 
-source-repository:  https://github.com/futu2/h-raylib-examples
+source-repository head
+  type:             git
+  location:         git://github.com/futu2/h-raylib-examples
 
 common warnings
     ghc-options: -Wall
