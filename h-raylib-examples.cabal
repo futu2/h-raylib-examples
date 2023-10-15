@@ -1,0 +1,23 @@
+cabal-version:      3.8
+name:               h-raylib-examples
+version:            0.1.0.0
+synopsis:           offical raylib examples in h-raylib
+license:            MIT
+license-file:       LICENSE
+author:             futu2
+category:           Game
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+
+common warnings
+    ghc-options: -Wall
+
+executable core
+    import:           warnings
+    main-is:          Main.hs
+    build-depends:
+        base >=4.9,
+        h-raylib >= 4.6.0.6,
+        random,
+    hs-source-dirs:   src
+    default-language: GHC2021
