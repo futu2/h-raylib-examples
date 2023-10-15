@@ -9,6 +9,7 @@ import InputGestures
 
 
 import Camera2D
+import Data.Foldable (traverse_)
 
 
 exampleList :: [(String, IO ())]
@@ -24,7 +25,7 @@ exampleList =
 main :: IO ()
 main = do
     putStrLn "Examples available:"
-    traverse (\(k, v) -> putStrLn $ show k <> ". " <> v ) $ zip [1..] (fst <$> exampleList)
+    traverse_ (\(k, v) -> putStrLn $ show k <> ". " <> v ) $ zip [1..] (fst <$> exampleList)
     putStrLn "Input number to select example:"
     l :: Int<- read <$> getLine
     snd $ exampleList !! (l - 1)

@@ -1,14 +1,12 @@
 module InputMouse where
 
 import Control.Monad
-import Data.Foldable
 import Raylib.Core
 import Raylib.Core.Shapes
 import Raylib.Core.Text
 import Raylib.Types
 import Raylib.Util
 import Raylib.Util.Colors
-import Raylib.Util.Math
 
 -- vectorSum :: (Foldable t, Vector a) => t a -> a
 -- vectorSum = foldl' (|+|) zero

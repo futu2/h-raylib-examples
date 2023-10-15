@@ -1,7 +1,6 @@
 module Camera2D where
 
 import Control.Monad
-import Data.Foldable
 import Raylib.Core
 import Raylib.Core.Shapes
 import Raylib.Core.Text
@@ -12,7 +11,6 @@ import Raylib.Util.Colors
 import Raylib.Util.Math
 
 import System.Random
-import Data.Traversable (for)
 
 screenWidth :: Int
 screenWidth = 800

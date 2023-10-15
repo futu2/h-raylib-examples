@@ -17,7 +17,7 @@ source-repository head
   location:         git://github.com/futu2/h-raylib-examples
 
 common warnings
-    ghc-options: -Wall
+    ghc-options: -Wall -Wno-missing-home-modules -Wno-type-defaults
 
 executable core
     import:           warnings

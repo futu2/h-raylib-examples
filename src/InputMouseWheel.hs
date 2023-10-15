@@ -1,14 +1,11 @@
 module InputMouseWheel where
 
 import Control.Monad
-import Data.Foldable
 import Raylib.Core
 import Raylib.Core.Shapes
 import Raylib.Core.Text
-import Raylib.Types
 import Raylib.Util
 import Raylib.Util.Colors
-import Raylib.Util.Math
 
 screenWidth :: Int
 screenWidth = 800

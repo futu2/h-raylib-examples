@@ -10,9 +10,7 @@ import Raylib.Types
 import Raylib.Util
 import Raylib.Util.Colors
 import Raylib.Util.Math
-
 import Data.Function
-import Data.Traversable
 
 -- vectorSum :: (Foldable t, Vector a) => t a -> a
 -- vectorSum = foldl' (|+|) zero
