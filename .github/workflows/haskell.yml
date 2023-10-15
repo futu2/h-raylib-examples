@@ -2,9 +2,9 @@ name: build
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, gh-workflow]
   pull_request:
-    branches: [main, master]
+    branches: [main, master, gh-workflow]
 
 permissions:
   contents: read
