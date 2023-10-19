@@ -9,6 +9,7 @@ import InputGestures
 
 
 import Camera2D
+import Camera2DMouseZoom
 import Data.Foldable (traverse_)
 
 
@@ -20,6 +21,7 @@ exampleList =
   , ("input mouseWheel", InputMouseWheel.main)
   , ("input gesture", InputGestures.main)
   , ("camera 2d", Camera2D.main)
+  , ("camera 2d mouse zoom", Camera2DMouseZoom.main)
   ]
 
 main :: IO ()

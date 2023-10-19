@@ -7,7 +7,7 @@ official raylib examples in h-raylib
 ## Core
 
 - [x] core/core_2d_camera.c
-- [ ] core/core_2d_camera_mouse_zoom.c
+- [x] core/core_2d_camera_mouse_zoom.c
 - [ ] core/core_2d_camera_platformer.c
 - [ ] core/core_2d_camera_split_screen.c
 - [ ] core/core_3d_camera_first_person.c
