@@ -26,5 +26,6 @@ executable core
       , base >= 4.9 && < 5
       , h-raylib >= 4.6.0.6 && < 5
       , random >= 1.2.0  && < 2
+      , lens >= 5 && < 6
     hs-source-dirs:   src
     default-language: GHC2021
