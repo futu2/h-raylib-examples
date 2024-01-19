@@ -74,17 +74,16 @@ loop bs (player, rot, zoom) = do
         if reset
           then 0
           else
-            (\x -> clamp x (-40) 40) $
+            clamp (-40) 40 $
               rot + case r of
                 [True, False] -> 1
                 [False, True] -> -1
                 _ -> 0
   mouseMove <- getMouseWheelMove
-  -- !!TODO: more haskellish function def in Raylib.Math
   let zoom' =
         if reset
           then 1
-          else (\x -> clamp x 0.1 3) $ zoom + mouseMove * 0.05
+          else clamp 0.1 3 $ zoom + mouseMove * 0.05
   let newCamera = cameraOnPlayer player' rot' zoom'
 
   drawing $ do

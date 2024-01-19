@@ -8,9 +8,6 @@ import Raylib.Types
 import Raylib.Util
 import Raylib.Util.Colors
 
--- vectorSum :: (Foldable t, Vector a) => t a -> a
--- vectorSum = foldl' (|+|) zero
-
 screenWidth :: Int
 screenWidth = 800
 
@@ -42,12 +39,11 @@ colorSheet b = case b of
 loop :: (Vector2, Color) -> IO (Vector2, Color)
 loop (_, ballColor) = do
   mousePosition <- getMousePosition
-  -- !! TODO: Bounds for MouseButton
-  colors <- fmap colorSheet <$> filterM isMouseButtonPressed (toEnum <$> [0..6])
+  colors <- fmap colorSheet <$> filterM isMouseButtonPressed [minBound..maxBound]
   let newColor = head $ colors <> [ballColor]
   drawing $ do
     clearBackground rayWhite
-    drawText "move the ball with arrow keys" 10 10 20 darkGray
+    drawText "move ball with mouse and click mouse button to change color" 10 10 20 darkGray
     drawCircleV mousePosition 50 newColor
   return (mousePosition, newColor)
 

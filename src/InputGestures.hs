@@ -12,9 +12,6 @@ import Raylib.Util.Colors
 import Raylib.Util.Math
 import Data.Function
 
--- vectorSum :: (Foldable t, Vector a) => t a -> a
--- vectorSum = foldl' (|+|) zero
-
 screenWidth :: Int
 screenWidth = 800
 
@@ -41,10 +38,6 @@ initTouchPosition = zero
 maxGestureStrings :: Int
 maxGestureStrings = 20
 
--- !! TODO: Eq for Gesture
-(//=) :: Gesture -> Gesture -> Bool
-(//=) = (/=) `on` fromEnum
-
 loop :: [Gesture] -> IO [Gesture]
 loop gs = do
   currentGesture <- getGestureDetected
@@ -53,8 +46,8 @@ loop gs = do
     lastGesture = if null gs then GestureNone else head gs
     newGestures =
       if checkCollisionPointRec touchPosition touchArea
-        && (currentGesture //= GestureNone)
-        && (currentGesture //= lastGesture)
+        && (currentGesture /= GestureNone)
+        && (currentGesture /= lastGesture)
         then
           if length gs + 1 >= maxGestureStrings
             then []
@@ -73,7 +66,7 @@ loop gs = do
       (fade gray 0.5)
     drawRectangleLines 10 29 200 (screenWidth - 50) gray
     drawText "DETECTED GESTURES" 50 15 10 gray
-    when (currentGesture //= GestureNone) $ drawCircleV touchPosition 30 maroon
+    when (currentGesture /= GestureNone) $ drawCircleV touchPosition 30 maroon
     for_ (zip newGestures [0 ..]) $ \(g, i) -> do
       drawRectangle
         10

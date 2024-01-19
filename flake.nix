@@ -14,9 +14,15 @@
 
           haskellPackages = pkgs.haskellPackages.override {
             overrides = self: super: {
-              h-raylib =
-                pkgs.haskell.lib.doJailbreak
-                  (pkgs.haskell.lib.unmarkBroken super.h-raylib);
+              h-raylib = self.callHackageDirect 
+                {
+                  pkg = "h-raylib";
+                  ver = "5.1.0.1";
+                  sha256 = "sha256-Gn9ieirSjQ0zj1zkf5A2T+x5AFZDGSqgHkD05VUfIAA=";
+                } { c=null;};
+                # pkgs.haskell.lib.doJailbreak
+                # (pkgs.haskell.lib.unmarkBroken super.h-raylib);
+
             };
           };
 

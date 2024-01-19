@@ -1,7 +1,6 @@
 module InputKeys where
 
 import Control.Monad
-import Data.Foldable
 import Raylib.Core
 import Raylib.Core.Shapes
 import Raylib.Core.Text
@@ -9,10 +8,6 @@ import Raylib.Types
 import Raylib.Util
 import Raylib.Util.Colors
 import Raylib.Util.Math
-
--- !!TODO: add sum to Vector
-vectorSum :: (Foldable t, Vector a) => t a -> a
-vectorSum = foldl' (|+|) zero
 
 screenWidth :: Int
 screenWidth = 800
