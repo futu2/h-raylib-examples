@@ -8,7 +8,7 @@ official raylib examples in h-raylib
 
 - [x] core/core_2d_camera.c
 - [x] core/core_2d_camera_mouse_zoom.c
-- [ ] core/core_2d_camera_platformer.c
+- [x] core/core_2d_camera_platformer.c
 - [ ] core/core_2d_camera_split_screen.c
 - [ ] core/core_3d_camera_first_person.c
 - [ ] core/core_3d_camera_free.c
@@ -38,3 +38,24 @@ official raylib examples in h-raylib
 - [ ] core/core_window_letterbox.c
 - [ ] core/core_window_should_close.c
 - [ ] core/core_world_screen.c
+
+## Usage
+
+```
+git clone https://github.com/futu2/h-raylib-examples
+cd h-raylib-examples
+nix run
+```
+and choose example
+```
+Examples available:
+1. basic window
+2. input keys
+3. input mouse
+4. input mouseWheel
+5. input gesture
+6. camera 2d
+7. camera 2d mouse zoom
+8. camera 2d platformer
+Input number to select example:
+```
