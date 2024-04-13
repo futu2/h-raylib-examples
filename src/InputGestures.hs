@@ -10,7 +10,6 @@ import Raylib.Types
 import Raylib.Util
 import Raylib.Util.Colors
 import Raylib.Util.Math
-import Data.Function
 
 screenWidth :: Int
 screenWidth = 800
