@@ -17,8 +17,8 @@
               h-raylib = self.callHackageDirect
                 {
                   pkg = "h-raylib";
-                  ver = "5.1.2.0";
-                  sha256 = "sha256-YyCTiSWbl7nBo4e8MV5qBzTSC9qEqtGqxh9sFLeEzDE=";
+                  ver = "5.1.3.0";
+                  sha256 = "sha256-KrhDxkyijeloIitYZ47v/7010uLKRKgKk1OBHlk7oDI=";
                 }
                 { c = null; };
               # pkgs.haskell.lib.doJailbreak

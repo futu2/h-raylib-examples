@@ -12,7 +12,6 @@ import Raylib.Util
 import Raylib.Util.Colors
 import Raylib.Util.Lenses
 import Raylib.Util.Math
-import System.IO.Unsafe
 
 screenWidth :: Int
 screenWidth = 800
@@ -118,8 +117,8 @@ cameraCenterInsideMap player es delta width' height' camera =
     maxY =
       maybe (-1000) (max (-1000)) $
         maximumOf (traverse . rect . to (\f -> f ^. _rectangle'y + f ^. _rectangle'height)) es
-    maxV = unsafePerformIO $ getWorldToScreen2D (Vector2 maxX maxY) cameraCentered
-    minV = unsafePerformIO $ getWorldToScreen2D (Vector2 minX minY) cameraCentered
+    maxV = getWorldToScreen2D (Vector2 maxX maxY) cameraCentered
+    minV = getWorldToScreen2D (Vector2 minX minY) cameraCentered
     cameraCentered = cameraCenter player es delta width' height' camera
 
 cameraCenterSmoothFollow :: CameraUpdaterSimple
@@ -192,8 +191,8 @@ cameraPlayerBoundsPush player _ _ width' height' camera =
     -- bbbox = Vector2 0.2 0.2
     bboxX = 0.2
     bboxY = 0.2
-    (Vector2 bboxWorldMinX bboxWorldMinY) = unsafePerformIO $ getScreenToWorld2D (Vector2 ((1 - bboxX) * width / 2) ((1 - bboxY) * height / 2)) camera
-    (Vector2 bboxWorldMaxX bboxWorldMaxY) = unsafePerformIO $ getScreenToWorld2D (Vector2 ((1 + bboxX) * width / 2) ((1 + bboxY) * height / 2)) camera
+    (Vector2 bboxWorldMinX bboxWorldMinY) = getScreenToWorld2D (Vector2 ((1 - bboxX) * width / 2) ((1 - bboxY) * height / 2)) camera
+    (Vector2 bboxWorldMaxX bboxWorldMaxY) = getScreenToWorld2D (Vector2 ((1 + bboxX) * width / 2) ((1 + bboxY) * height / 2)) camera
 
 cameraUpdaters :: [(CameraUpdater, String)]
 cameraUpdaters = zip [fromSimple cameraCenter, fromSimple cameraCenterInsideMap, fromSimple cameraCenterSmoothFollow, cameraEvenOutOnLanding, fromSimple cameraPlayerBoundsPush] cameraDescriptions

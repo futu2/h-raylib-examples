@@ -50,9 +50,9 @@ gameLoop oldCamera = do
     if mouseWheel /= 0
       then do
         mousePos <- getMousePosition
-        mouseWorldPos <- getScreenToWorld2D mousePos (f1 oldCamera)
-        let f =
-              _camera2D'offset .~ mousePos
+        let 
+          mouseWorldPos = getScreenToWorld2D mousePos (f1 oldCamera)
+          f = _camera2D'offset .~ mousePos
                 >>> _camera2D'target .~ mouseWorldPos
                 >>> _camera2D'zoom %~ (\z -> max 0.125 (z + mouseWheel * 0.125))
         return f
