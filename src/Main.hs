@@ -4,12 +4,11 @@ import BasicWindow
 import InputKeys
 import InputMouse
 import InputMouseWheel
-
 import InputGestures
-
 import Camera2D
 import Camera2DMouseZoom
 import Camera2DPlatformer
+import Camera2DSplitScreen
 import Data.Foldable (traverse_)
 
 exampleList :: [(String, IO ())]
@@ -22,6 +21,7 @@ exampleList =
   , ("camera 2d", Camera2D.main)
   , ("camera 2d mouse zoom", Camera2DMouseZoom.main)
   , ("camera 2d platformer", Camera2DPlatformer.main)
+  , ("camera 2d split screen", Camera2DSplitScreen.main)
   ]
 
 main :: IO ()
