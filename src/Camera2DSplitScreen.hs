@@ -126,8 +126,6 @@ main :: IO ()
 main = do
   withWindow screenWidth screenHeight title fps $
     \window -> do
-      screenCamera1 <- loadRenderTexture (screenWidth `div` 2) screenHeight window
-      screenCamera2 <- loadRenderTexture (screenWidth `div` 2) screenHeight window
+      let semi = loadRenderTexture (screenWidth `div` 2) screenHeight
+      [screenCamera1, screenCamera2] <- managed window $ sequenceA [semi, semi]
       void $ whileWindowOpen (loop (screenCamera1, screenCamera2)) initGameState
-      unloadRenderTexture screenCamera1 window
-      unloadRenderTexture screenCamera2 window

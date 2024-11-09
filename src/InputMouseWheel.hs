@@ -31,9 +31,9 @@ loop boxPositionY = do
   let newBoxPositionY = mouseWheelMove * scrollSpeed + boxPositionY
   drawing $ do
     clearBackground rayWhite
-    drawRectangle (round $ fromIntegral screenWidth / 2 - 40) (round newBoxPositionY) 80 80 maroon
+    drawRectangle (round $ fromIntegral @Int @Double screenWidth / 2 - 40) (round newBoxPositionY) 80 80 maroon
     drawText "Use mouse wheel to move the cube up and down!" 10 10 20 darkGray
-    drawText ("Box position Y: " <> show (round newBoxPositionY)) 10 40 20 lightGray
+    drawText ("Box position Y: " <> show @Int (round newBoxPositionY)) 10 40 20 lightGray
   return newBoxPositionY
 
 main :: IO ()

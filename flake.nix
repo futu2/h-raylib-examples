@@ -3,44 +3,46 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    hix.url = "github:tek/hix?ref=0.7.1";
+    hix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs:
-    let
-      perSystem = system:
-        let
-          pkgs = import inputs.nixpkgs { inherit system; };
+  outputs = {hix, ...}: hix.lib.flake {
+    hackage.versionFile = "ops/version.nix";
 
-          haskellPackages = pkgs.haskellPackages.override {
-            overrides = self: super: {
-              h-raylib = self.callHackageDirect
-                {
-                  pkg = "h-raylib";
-                  ver = "5.1.3.0";
-                  sha256 = "sha256-KrhDxkyijeloIitYZ47v/7010uLKRKgKk1OBHlk7oDI=";
-                }
-                { c = null; };
-              # pkgs.haskell.lib.doJailbreak
-              # (pkgs.haskell.lib.unmarkBroken super.h-raylib);
+    compiler = "ghc98";
 
-            };
-          };
+    overrides = { hackage, cabalOverrides, ... }: {
+      "h-raylib" = cabalOverrides {c = null;} (hackage "5.5.2.1" "sha256-kn8S/jmfn4pAw2bZ6LwkzqIu5W24gOpnvFPUpUKHJFQ=");
+    };
 
-          jailbreakUnbreak = pkg:
-            pkgs.haskell.lib.doJailbreak (pkg.overrideAttrs (_: { meta = { }; }));
+    cabal = {
+      license = "MIT";
+      license-file = "LICENSE";
+      author = "h-raylib";
+      ghc-options = ["-Wall"];
+      language="GHC2021";
+    };
 
-          packageName = "h-raylib-examples";
-        in
-        {
-          packages.${packageName} = # (ref:haskell-package-def)
-            haskellPackages.callCabal2nix packageName ./. rec {
-              # Dependency overrides go here
-            };
+    packages.h-raylib-examples = {
+      src = ./.;
+      cabal.meta.synopsis = "h-raylib examples";
 
-          defaultPackage = inputs.self.packages.${system}.${packageName};
-          devShell = inputs.self.packages.${system}.${packageName}.env.overrideAttrs (oldEnv: { buildInputs = oldEnv.buildInputs ++ [ haskellPackages.haskell-language-server ]; });
-        };
-    in
-    inputs.flake-utils.lib.eachDefaultSystem perSystem;
+      library = {
+        enable = true;
+        source-dirs = "src";
+        dependencies = [
+          "h-raylib >= 5 && < 6"
+          "lens >= 5 && < 6"
+          "linear >= 1 && < 2"
+          "random >= 1 && < 2"
+        ];
+      };
+      executable = {
+        enable = true;
+        source-dirs = "app";
+      };
+
+    };
+  };
 }

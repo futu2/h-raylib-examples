@@ -42,7 +42,9 @@ loop gs = do
   currentGesture <- getGestureDetected
   touchPosition <- getTouchPosition 0
   let
-    lastGesture = if null gs then GestureNone else head gs
+    lastGesture = case gs of
+      [] -> GestureNone
+      (g : _)  -> g
     newGestures =
       if checkCollisionPointRec touchPosition touchArea
         && (currentGesture /= GestureNone)

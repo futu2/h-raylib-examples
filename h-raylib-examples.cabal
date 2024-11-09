@@ -1,31 +1,42 @@
-cabal-version:      3.8
-name:               h-raylib-examples
-version:            0.1.0.0
-synopsis:           offical raylib examples in h-raylib
-description:        
-  [WIP] offical raylib examples in h-raylib
-license:            MIT
-license-file:       LICENSE
-author:             futu2
-maintainer:         futu2
-category:           Game
-build-type:         Simple
-extra-doc-files:    CHANGELOG.md
+cabal-version: 1.12
 
-source-repository head
-  type:             git
-  location:         git://github.com/futu2/h-raylib-examples
+-- This file has been generated from package.yaml by hpack version 0.36.1.
+--
+-- see: https://github.com/sol/hpack
 
-common warnings
-    ghc-options: -Wall -Wno-missing-home-modules -Wno-type-defaults
+name:           h-raylib-examples
+version:        0.1.0.0
+synopsis:       h-raylib examples
+description:    See https://hackage.haskell.org/package/h-raylib-examples/docs/H-Raylib-Examples.html
+author:         h-raylib
+maintainer:     h-raylib
+copyright:      2023 h-raylib
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
 
 executable core
-    import:           warnings
-    main-is:          Main.hs
-    build-depends:
-      , base >= 4.9 && < 5
-      , h-raylib >= 5 && < 6
-      , random >= 1.2.0  && < 2
-      , lens >= 5 && < 6
-    hs-source-dirs:   src
-    default-language: GHC2021
+  main-is: Main.hs
+  other-modules:
+      BasicWindow
+      Camera2D
+      Camera2DMouseZoom
+      Camera2DPlatformer
+      Camera2DSplitScreen
+      InputGamepad
+      InputGestures
+      InputKeys
+      InputMouse
+      InputMouseWheel
+      InputMultitouch
+      Paths_h_raylib_examples
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base ==4.*
+    , h-raylib ==5.*
+    , lens ==5.*
+    , linear ==1.*
+    , random ==1.*
+  default-language: GHC2021

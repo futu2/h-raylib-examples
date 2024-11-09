@@ -1,15 +1,15 @@
 module Main where
 
 import BasicWindow
-import InputKeys
-import InputMouse
-import InputMouseWheel
-import InputGestures
 import Camera2D
 import Camera2DMouseZoom
 import Camera2DPlatformer
 import Camera2DSplitScreen
 import Data.Foldable (traverse_)
+import InputGestures
+import InputKeys
+import InputMouse
+import InputMouseWheel
 
 exampleList :: [(String, IO ())]
 exampleList =
@@ -27,7 +27,7 @@ exampleList =
 main :: IO ()
 main = do
   putStrLn "Examples available:"
-  traverse_ (\(k, v) -> putStrLn $ show k <> ". " <> v) $ zip [1 ..] (fst <$> exampleList)
+  traverse_ (\(k, v) -> putStrLn $ show k <> ". " <> v) $ zip [1 :: Int ..] (fst <$> exampleList)
   putStrLn "Input number to select example:"
   l :: Int <- read <$> getLine
   snd $ exampleList !! (l - 1)
