@@ -15,9 +15,8 @@ license:        MIT
 license-file:   LICENSE
 build-type:     Simple
 
-executable core
-  main-is: Main.hs
-  other-modules:
+library
+  exposed-modules:
       BasicWindow
       Camera2D
       Camera2DMouseZoom
@@ -29,14 +28,28 @@ executable core
       InputMouse
       InputMouseWheel
       InputMultitouch
+      ModelsLoadingGltf
+  other-modules:
       Paths_h_raylib_examples
   hs-source-dirs:
       src
-  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Wall
   build-depends:
       base ==4.*
     , h-raylib ==5.*
     , lens ==5.*
     , linear ==1.*
     , random ==1.*
+  default-language: GHC2021
+
+executable h-raylib-examples
+  main-is: Main.hs
+  other-modules:
+      Paths_h_raylib_examples
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base ==4.*
+    , h-raylib-examples
   default-language: GHC2021

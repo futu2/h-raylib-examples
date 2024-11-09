@@ -1,5 +1,6 @@
 module Main where
 
+-- core
 import BasicWindow
 import Camera2D
 import Camera2DMouseZoom
@@ -10,6 +11,9 @@ import InputGestures
 import InputKeys
 import InputMouse
 import InputMouseWheel
+
+-- model
+import ModelsLoadingGltf
 
 exampleList :: [(String, IO ())]
 exampleList =
@@ -22,6 +26,7 @@ exampleList =
   , ("camera 2d mouse zoom", Camera2DMouseZoom.main)
   , ("camera 2d platformer", Camera2DPlatformer.main)
   , ("camera 2d split screen", Camera2DSplitScreen.main)
+  , ("models loading gltf", ModelsLoadingGltf.main)
   ]
 
 main :: IO ()
